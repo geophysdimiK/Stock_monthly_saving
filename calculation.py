@@ -31,18 +31,18 @@ def invest(savings_rate):
     shares_purchased = savings_rate_net / price
 
 
-if os.path.exists(CSV_FILE):
+    if os.path.exists(CSV_FILE):
         df = pd.read_csv(CSV_FILE)
         shares_total = df["nr. of shares total"].iloc[-1] + shares_purchased
-else:
+    else:
         shares_total = shares_purchased
 
-value = shares_total * price
-now = datetime.now()
+    value = shares_total * price
+    now = datetime.now()
 
-new_entry = pd.DataFrame([[now, savings_rate, shares_purchased, shares_total, value]],
+    new_entry = pd.DataFrame([[now, savings_rate, shares_purchased, shares_total, value]],
                              columns=["datetime", "invested amount", "nr. of shares purchased", "nr. of shares total", "current value"])
 
-new_entry.to_csv(CSV_FILE, mode='a', header=not os.path.exists(CSV_FILE), index=False)
+    new_entry.to_csv(CSV_FILE, mode='a', header=not os.path.exists(CSV_FILE), index=False)
 
-return f"{shares_purchased:.4f} Aktien zu je {price:.2f} gekauft"
+    return f"{shares_purchased:.4f} Aktien zu je {price:.2f} gekauft"
