@@ -5,7 +5,7 @@ from pandas.tseries.offsets import BDay
 import os
 
 
-API_KEY = "DEIN_FINNHUB_API_KEY"
+API_KEY = "d1b8r7hr01qjhvtt52sgd1b8r7hr01qjhvtt52t0"
 CSV_FILE = "deposit.csv"
 
 def download_data():
