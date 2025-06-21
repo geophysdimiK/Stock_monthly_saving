@@ -34,7 +34,7 @@ def invest(savings_rate):
 if os.path.exists(CSV_FILE):
         df = pd.read_csv(CSV_FILE)
         shares_total = df["nr. of shares total"].iloc[-1] + shares_purchased
-    else:
+else:
         shares_total = shares_purchased
 
 value = shares_total * price
