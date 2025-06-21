@@ -8,6 +8,8 @@ from flask import request
 from flask import Flask
 from calculation import invest
 
+SECRET_TOKEN = "tz_53Nq29b_Yh7x"
+
 app = dash.Dash(__name__)
 server = app.server
 
@@ -27,7 +29,7 @@ if not os.path.exists(CSV_FILE):
 @server.route("/update", methods=["GET"])
 def update():
     token = request.args.get("token")
-    if token != "dein_geheimer_token":
+    if token != SECRET_TOKEN:
         return "Unauthorized", 403
 
     result = invest(savings_rate=100)  # z. B. 100 USD
